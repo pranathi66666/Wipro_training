@@ -1,0 +1,56 @@
+The scope of a variable in Java refers to the region of the program where the variable is accessible. 
+The scope depends on where the variable is declared. Here's how the scope differs for variables declared inside methods, blocks, and classes:
+
+1. Method Scope (Local Variables):
+   Variables declared inside a method are accessible only within that method.
+   They are not accessible outside the method, including other methods or classes.
+
+2. Block Scope (Local Variables in Blocks):
+   Variables declared inside a block (e.g., if, for, while) are only accessible within that block.
+   They are created when the block is entered and destroyed when the block is exited.
+   Class Scope (Instance and Static Variables):
+
+3. Instance variables 
+   Instant Variables are declared at the class level but outside methods. 
+   They are accessible throughout the class via any method or constructor, as long as they belong to an instance of the class.
+   Static variables are also declared at the class level but are shared by all instances of the class. 
+   They can be accessed via the class name or any object of the class.
+
+Example:
+
+public class VariableScopeDemo {
+    int instanceVariable = 10;  // Class scope (instance variable)
+    static int staticVariable = 20;  // Class scope (static variable)
+
+    public void methodScopeExample() {
+        int localVar = 30;  // Method scope (local variable)
+        if (localVar > 10) {
+            int blockVar = 40;  // Block scope (inside if block)
+            System.out.println("Block Variable: " + blockVar);
+        }
+        // System.out.println("Block Variable: " + blockVar);  // Error: blockVar is not accessible here
+        System.out.println("Method Local Variable: " + localVar);
+    }
+
+    public void accessClassScope() {
+        System.out.println("Instance Variable: " + instanceVariable);
+        System.out.println("Static Variable: " + staticVariable);
+    }
+
+    public static void main(String[] args) {
+        VariableScopeDemo obj = new VariableScopeDemo();
+        obj.methodScopeExample();
+        obj.accessClassScope();
+        
+        System.out.println("Accessing Static Variable Directly: " + VariableScopeDemo.staticVariable);
+    }
+}
+
+
+Output:
+Block Variable: 40
+Method Local Variable: 30
+Instance Variable: 10
+Static Variable: 20
+Accessing Static Variable Directly: 20
+
