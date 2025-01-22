@@ -1,0 +1,26 @@
+In Java, a final variable is a variable whose value cannot be modified once it is initialized. 
+This means that once you assign a value to a final variable, you cannot change it later in the program. 
+The final keyword can be applied to variables, methods, and classes. When applied to a variable, it guarantees that the variable will be assigned a value only once.
+
+The behavior of final variables is as follows:
+   For primitive types, the value cannot be changed after initialization.
+   For reference types, the reference (address) cannot be changed, but the contents of the object that the reference points to can be modified.
+
+public class FinalVariableExample {
+    // Final variable
+    final int maxSpeed = 120;
+
+    public static void main(String[] args) {
+        // Create an instance of the class
+        FinalVariableExample example = new FinalVariableExample();
+
+        // Printing the initial value of the final variable
+        System.out.println("Initial maxSpeed: " + example.maxSpeed);
+
+        // Attempting to modify the final variable (This will cause a compilation error)
+        // example.maxSpeed = 150; // Uncommenting this line will result in a compilation error
+    }
+}
+
+Output:
+Initial maxSpeed: 120
