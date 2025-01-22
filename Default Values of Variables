@@ -1,0 +1,69 @@
+In Java, instance variables and static variables are automatically initialized with default values if not explicitly assigned. 
+The default values depend on the variable's data type:
+
+Data Type	Default Value
+byte    	0
+short   	0
+int	      0
+long	    0L
+float	    0.0f
+double	  0.0d
+char	    '\u0000' (null character)
+boolean	  false
+
+
+public class DefaultValues {
+    // Instance variables
+    byte byteVar;
+    short shortVar;
+    int intVar;
+    long longVar;
+    float floatVar;
+    double doubleVar;
+    char charVar;
+    boolean booleanVar;
+    String stringVar; // Reference type
+
+    // Static variables
+    static int staticIntVar;
+    static boolean staticBooleanVar;
+
+    public static void main(String[] args) {
+        // Create an object to access instance variables
+        DefaultValues obj = new DefaultValues();
+
+        // Display default values of instance variables
+        System.out.println("Default values of instance variables:");
+        System.out.println("byteVar: " + obj.byteVar);
+        System.out.println("shortVar: " + obj.shortVar);
+        System.out.println("intVar: " + obj.intVar);
+        System.out.println("longVar: " + obj.longVar);
+        System.out.println("floatVar: " + obj.floatVar);
+        System.out.println("doubleVar: " + obj.doubleVar);
+        System.out.println("charVar: '" + obj.charVar + "'"); // Char is displayed in quotes
+        System.out.println("booleanVar: " + obj.booleanVar);
+        System.out.println("stringVar: " + obj.stringVar);
+
+        // Display default values of static variables
+        System.out.println("\nDefault values of static variables:");
+        System.out.println("staticIntVar: " + staticIntVar);
+        System.out.println("staticBooleanVar: " + staticBooleanVar);
+    }
+}
+
+
+Output:
+Default values of instance variables:
+byteVar: 0
+shortVar: 0
+intVar: 0
+longVar: 0
+floatVar: 0.0
+doubleVar: 0.0
+charVar: ' ' (null character)
+booleanVar: false
+stringVar: null
+
+Default values of static variables:
+staticIntVar: 0
+staticBooleanVar: false
