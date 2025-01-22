@@ -1,0 +1,57 @@
+In Java, variables can be classified into three types based on their scope, lifetime, and association with instances or classes. These are:
+
+1.Local Variables:
+Declared within a method, constructor, or block.
+Only accessible within that method, constructor, or block.
+Do not have default values, so they must be initialized before use.
+Their lifetime is limited to the execution of the method, constructor, or block.
+
+2.Instance Variables:
+Declared inside a class but outside any method, constructor, or block.
+Belong to an instance of the class, meaning each object of the class has its own copy.
+Automatically initialized with default values if not explicitly initialized (e.g., null for objects, 0 for integers).
+Their lifetime is tied to the lifetime of the object.
+
+3. Static Variables:
+Declared with the static keyword inside a class but outside any method, constructor, or block.
+Belong to the class, not to any specific instance of the class. Only one copy of the static variable exists, regardless of the number of objects.
+Automatically initialized with default values.
+Their lifetime is tied to the lifetime of the class (i.e., they exist as long as the class is loaded into memory).
+
+public class VariableDemo {
+    // Instance variable
+    int instanceVariable = 10;
+
+    // Static variable
+    static int staticVariable = 20;
+
+    // Method to demonstrate local variable
+    public void displayVariables() {
+        // Local variable
+        int localVariable = 30;
+
+        // Printing values of local, instance, and static variables
+        System.out.println("Local Variable: " + localVariable);
+        System.out.println("Instance Variable: " + instanceVariable);
+        System.out.println("Static Variable: " + staticVariable);
+    }
+
+    // Main method to run the program
+    public static void main(String[] args) {
+        // Creating an object of VariableDemo class
+        VariableDemo obj1 = new VariableDemo();
+
+        // Calling the method to display variable values
+        obj1.displayVariables();
+
+        // Accessing and modifying static variable using class name
+        System.out.println("Accessing Static Variable directly from class: " + VariableDemo.staticVariable);
+        VariableDemo.staticVariable = 50;  // Modifying the static variable
+        System.out.println("Modified Static Variable: " + VariableDemo.staticVariable);
+
+        // Creating another object of VariableDemo
+        VariableDemo obj2 = new VariableDemo();
+        obj2.displayVariables();  // Instance variables will be independent for each object
+    }
+}
+
