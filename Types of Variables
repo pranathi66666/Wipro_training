@@ -18,6 +18,8 @@ Belong to the class, not to any specific instance of the class. Only one copy of
 Automatically initialized with default values.
 Their lifetime is tied to the lifetime of the class (i.e., they exist as long as the class is loaded into memory).
 
+Example Code:
+
 public class VariableDemo {
     // Instance variable
     int instanceVariable = 10;
