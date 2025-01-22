@@ -57,3 +57,14 @@ public class VariableDemo {
     }
 }
 
+
+Output:
+Local Variable: 30
+Instance Variable: 10
+Static Variable: 20
+Accessing Static Variable directly from class: 20
+Modified Static Variable: 50
+Local Variable: 30
+Instance Variable: 10
+Static Variable: 50
+
