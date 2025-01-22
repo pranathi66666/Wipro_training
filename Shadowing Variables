@@ -1,0 +1,45 @@
+Variable shadowing occurs in Java when a variable declared in a smaller scope (e.g., a method or block) has the same name as a variable declared in a larger scope (e.g., a class or method). 
+The variable in the smaller scope "shadows" the one in the larger scope, making the larger scoped variable temporarily inaccessible within the smaller scope.
+
+This can happen at the following levels:
+
+Class-level shadowing: A local variable shadows an instance or static variable.
+Method-level shadowing: A parameter shadows a class-level variable.
+Block-level shadowing: A variable declared inside a block shadows one declared outside the block.
+
+public class VariableShadowing {
+    // Class-level variable
+    static int x = 10; // Static variable
+    int y = 20; // Instance variable
+
+    public void demonstrateShadowing(int x) { // Method parameter shadows class-level 'x'
+        System.out.println("Method parameter 'x': " + x);
+        System.out.println("Class-level 'x' (accessed with class name): " + VariableShadowing.x);
+
+        // Block-level shadowing
+        {
+            int y = 30; // Shadows instance variable 'y'
+            System.out.println("Block-level 'y': " + y);
+            System.out.println("Instance-level 'y' (accessed with 'this'): " + this.y);
+        }
+
+        // Outside the block, instance 'y' is accessible
+        System.out.println("Instance-level 'y' outside the block: " + y);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Class-level static 'x': " + x);
+
+        VariableShadowing obj = new VariableShadowing();
+        obj.demonstrateShadowing(50); // Passing a method parameter
+    }
+}
+
+
+Output:
+Class-level static 'x': 10
+Method parameter 'x': 50
+Class-level 'x' (accessed with class name): 10
+Block-level 'y': 30
+Instance-level 'y' (accessed with 'this'): 20
+Instance-level 'y' outside the block: 20
