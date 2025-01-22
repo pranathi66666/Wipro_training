@@ -1,0 +1,62 @@
+The volatile keyword in Java ensures that the value of a variable is always read directly from and written to the main memory, rather than being cached in a thread's local memory.
+This guarantees visibility of changes to the variable across multiple threads.
+Without volatile, one thread might see a stale (cached) value of the variable while another thread has updated it.
+
+Key Features of volatile:
+Visibility: Changes made by one thread are immediately visible to other threads.
+No Atomicity: volatile does not guarantee atomicity; it only ensures visibility.
+Use Case: Useful for flags, state variables, or when threads share simple variables.
+
+
+
+class SharedResource {
+    volatile boolean running = true; // Shared variable with 'volatile'
+
+    public void stopRunning() {
+        running = false; // Updates the value
+        System.out.println("Thread 1: running set to false");
+    }
+}
+
+public class VolatileDemo {
+    public static void main(String[] args) {
+        SharedResource resource = new SharedResource();
+
+        // Thread 1: Modifies the 'running' variable
+        Thread thread1 = new Thread(() -> {
+            try {
+                Thread.sleep(1000); // Simulate some delay
+                resource.stopRunning();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Thread 2: Continuously checks the 'running' variable
+        Thread thread2 = new Thread(() -> {
+            while (resource.running) {
+                // Busy wait (CPU will keep checking 'running')
+            }
+            System.out.println("Thread 2: Detected running is false. Exiting loop.");
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Both threads have finished execution.");
+    }
+}
+
+
+Output:
+Thread 1: running set to false
+Thread 2: Detected running is false. Exiting loop.
+Both threads have finished execution.
+
