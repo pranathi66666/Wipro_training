@@ -1,0 +1,57 @@
+Here are the key differences between primitive variables and reference variables in Java:
+
+Data Type:
+Primitive variables store basic data types like int, float, boolean, etc.
+Reference variables store the memory address (reference) of objects in the heap.
+
+Memory Allocation:
+Primitive variables are stored directly in the stack memory.
+Reference variables have their reference in the stack, but the actual object is stored in the heap.
+
+Value Independence:
+Primitive variables are independent; changing one variable does not affect another.
+Reference variables point to the same object; changes via one reference affect all references to that object.
+
+Nullability:
+Primitive variables cannot be null.
+Reference variables can be null, meaning they do not point to any object.
+
+Behavior During Assignment:
+Assigning one primitive variable to another copies the value.
+Assigning one reference variable to another makes both point to the same object.
+
+
+
+public class PrimitiveVsReference {
+    public static void main(String[] args) {
+        // Primitive variable example
+        int a = 10;
+        int b = a; // Copy the value of 'a' to 'b'
+        b = 20; // Changing 'b' does not affect 'a'
+        System.out.println("Primitive Variables:");
+        System.out.println("a = " + a); // Output: a = 10
+        System.out.println("b = " + b); // Output: b = 20
+
+        // Reference variable example
+        int[] array1 = {1, 2, 3};
+        int[] array2 = array1; // Both point to the same object
+        array2[0] = 99; // Changing array2 affects array1
+        System.out.println("\nReference Variables:");
+        System.out.print("array1 = ");
+        for (int num : array1) {
+            System.out.print(num + " "); // Output: 99 2 3
+        }
+        System.out.print("\narray2 = ");
+        for (int num : array2) {
+            System.out.print(num + " "); // Output: 99 2 3
+
+        // Demonstrating null reference
+        array2 = null; // array2 now points to null
+        System.out.println("\n\nAfter setting array2 to null:");
+        System.out.println("array2 = " + array2); // Output: null
+        System.out.print("array1 = ");
+        for (int num : array1) {
+            System.out.print(num + " "); // Output: 99 2 3 (unaffected)
+        }
+    }
+}
