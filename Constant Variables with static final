@@ -1,0 +1,29 @@
+In Java, static final variables are used to define constants. These variables are:
+
+static: Belong to the class, not to any specific instance, so they can be accessed without creating an object.
+final: Their value cannot be changed after initialization, making them immutable constants.
+Using static final is a common practice for defining constants such as mathematical values or fixed configurations.
+
+public class CircleCalculator {
+    // Define constants using static final
+    public static final double PI = 3.14159;
+
+    public static void main(String[] args) {
+        double radius = 5.0; // Radius of the circle
+
+        // Calculate area and circumference
+        double area = PI * radius * radius; // Area formula: πr²
+        double circumference = 2 * PI * radius; // Circumference formula: 2πr
+
+        // Display results
+        System.out.println("Circle with radius " + radius + ":");
+        System.out.println("Area = " + area);
+        System.out.println("Circumference = " + circumference);
+    }
+}
+
+
+Output:
+Circle with radius 5.0:
+Area = 78.53975
+Circumference = 31.4159
